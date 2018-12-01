@@ -111,7 +111,12 @@ void Game::update()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
 	{
-		glScalef(1.0f, 1.0f, 1.0f);
+		glScalef(1.1f, 1.1f, 1.0f);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::V))
+	{
+		glScalef(0.9f, 0.9f, 1.0f);
 	}
 
 
