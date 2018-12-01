@@ -1,5 +1,6 @@
 #include <Game.h>
-
+#include <gl/GL.h> 
+#include <gl/GLU.h>
 
 int currentTriangle = 0;
 
@@ -36,7 +37,7 @@ void Game::run()
 void Game::initialize()
 {
 	//Added Part 2
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f); 
+	glClearColor(0.0f, 100.0f, 0.0f, 0.0f); 
 	glMatrixMode(GL_PROJECTION); 
 	glLoadIdentity(); 
 	gluPerspective(45.0, window.getSize().x / window.getSize().y, 1.0, 500.0);
@@ -85,6 +86,38 @@ void Game::update()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::J))
 	{
 		currentTriangle = 9;
+	}
+	
+	//Rotation
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		glRotatef(1, 0.0f, 0.0f, 1.0f);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		glRotatef(-1, 0.0f, 0.0f, 1.0f);
+	}
+
+	
+	//Translation
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		glTranslatef(0.01f, 0.0f, 0.0f);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		glTranslatef(-0.01f, 0.0f, 0.0f);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
+	{
+		glScalef(1.0f, 1.0f, 1.0f);
+	}
+
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
+		glLoadIdentity();
 	}
 }
 
