@@ -19,7 +19,7 @@ void Game::run()
 
 	while (isRunning) {
 
-		cout << "Game running..." << endl;
+		//cout << "Game running..." << endl;
 
 		while (window.pollEvent(event))
 		{
@@ -43,12 +43,18 @@ void Game::initialize()
 	gluPerspective(45.0, window.getSize().x / window.getSize().y, 1.0, 500.0);
 	glMatrixMode(GL_MODELVIEW);
 
+	std::cout << "Pres Q,W,E,R,T,Y,U,I,J to change triangle" << std::endl;
+	std::cout << "Press Up and Down on the arrow keys to rotate" << std::endl;
+	std::cout << "Press Left and Right to translate the triangle" << std::endl;
+	std::cout << "Press C and V to change the Scale of the Triangle" << std::endl;
+	std::cout << "Press A to return the identity triangle i.e reset the triangle" << std::endl;
+
 	isRunning = true;
 }
 
 void Game::update()
 {
-	cout << "Update up" << endl;
+	//cout << "Update up" << endl;
 
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
@@ -91,11 +97,11 @@ void Game::update()
 	//Rotation
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		glRotatef(1, 0.0f, 0.0f, 1.0f);
+		glRotatef(0.1, 0.0f, 0.0f, 1.0f);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		glRotatef(-1, 0.0f, 0.0f, 1.0f);
+		glRotatef(-0.1, 0.0f, 0.0f, 1.0f);
 	}
 
 	
@@ -109,17 +115,18 @@ void Game::update()
 		glTranslatef(-0.01f, 0.0f, 0.0f);
 	}
 
+	//Scale
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
 	{
-		glScalef(1.1f, 1.1f, 1.0f);
+		glScalef(1.01f,  1.01f, 1.0f);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::V))
 	{
-		glScalef(0.9f, 0.9f, 1.0f);
+		glScalef(0.99f, 0.99f, 1.0f);
 	}
 
-
+	//Identity
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		glLoadIdentity();
@@ -131,7 +138,7 @@ void Game::draw()
 	if (currentTriangle == 0)
 	{
 		//Initial Triangle
-		cout << "Draw up" << endl;
+		//cout << "Draw up" << endl;
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
 		glBegin(GL_TRIANGLES); 
 		{ 
@@ -146,7 +153,7 @@ void Game::draw()
 	{
 		//GL Points
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		cout << "Draw up" << endl;
+		//cout << "Draw up" << endl;
 		glBegin(GL_POINTS);
 		{
 			glVertex3f(0.0, 2.0, -5.0);
@@ -160,7 +167,7 @@ void Game::draw()
 	{
 		//Lines
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		cout << "Draw up" << endl;
+		//cout << "Draw up" << endl;
 		glBegin(GL_LINES);
 		{
 			glVertex3f(0.0, 2.0, -5.0);
@@ -174,7 +181,7 @@ void Game::draw()
 	{
 		//Line Strip
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		cout << "Draw up" << endl;
+		//cout << "Draw up" << endl;
 		glBegin(GL_LINE_STRIP);
 		{
 			glVertex3f(0.0, 2.0, -5.0);
@@ -188,7 +195,7 @@ void Game::draw()
 	{
 		//Line Loop
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		cout << "Draw up" << endl;
+		//cout << "Draw up" << endl;
 		glBegin(GL_LINE_LOOP);
 		{
 			glVertex3f(0.0, 2.0, -5.0);
@@ -202,7 +209,7 @@ void Game::draw()
 	{
 		//Strip
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		cout << "Draw up" << endl;
+		//cout << "Draw up" << endl;
 		glBegin(GL_TRIANGLE_STRIP);
 		{
 			glVertex3f(0.0, 2.0, -5.0);
@@ -216,7 +223,7 @@ void Game::draw()
 	{
 		//Fan
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		cout << "Draw up" << endl;
+		//cout << "Draw up" << endl;
 		glBegin(GL_TRIANGLE_FAN);
 		{
 			glVertex3f(0.0, 2.0, -5.0);
@@ -230,7 +237,7 @@ void Game::draw()
 	{
 		//GL_QUADS
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		cout << "Draw up" << endl;
+		//cout << "Draw up" << endl;
 		glBegin(GL_QUADS);
 		{
 			glVertex3f(0.0, 2.0, -5.0);
@@ -245,7 +252,7 @@ void Game::draw()
 	{
 		//Quad Strip
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		cout << "Draw up" << endl;
+		//cout << "Draw up" << endl;
 		glBegin(GL_QUAD_STRIP);
 		{
 			glVertex3f(0.0, 2.0, -5.0);
@@ -260,7 +267,7 @@ void Game::draw()
 	{
 		//Poly
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		cout << "Draw up" << endl;
+		//cout << "Draw up" << endl;
 		glBegin(GL_POLYGON);
 		{
 			glVertex3f(0.0, 2.0, -5.0);
@@ -281,6 +288,6 @@ void Game::draw()
 
 void Game::unload()
 {
-	cout << "Cleaning up" << endl;
+	//cout << "Cleaning up" << endl;
 }
 
